@@ -1,0 +1,9 @@
+ÁrPárbaj LIVE – FINAL BUILD
+1. Másold a teljes mappát a meglévő projekt helyére (a data/images/uploads tartalmad megőrizhető).
+2. Indítás: INDITAS.bat vagy: node server.js
+3. Játék: http://localhost:3000
+4. Admin: http://localhost:3000/admin
+5. Hangfájlok helye: sounds/timer.mp3, buzzer.mp3, reveal.mp3, crowd.mp3
+Funkciók: 20 mp kérdés, A-Z betűs opciók (számjegyek nélkül), nehézség szerinti sorrendi pontozás,
+kérdésenként egyszeri válasz játékosonként, 2x/3x ajándékszorzó, váltakozó kérdés/bajnokság TOP25,
+automatikus görgetés, 10. kérdés után TOP3 dobogó és ünneplés.

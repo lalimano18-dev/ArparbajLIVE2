@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ár Párbaj Live</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header__logo-area">
+                <div class="logo">
+                    <svg class="logo__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFCC00" stroke="#FFCC00" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="logo__text">
+                        <span class="logo__text-top">ÁR</span>
+                        <span class="logo__text-bottom">PÁRBAJ</span>
+                    </div>
+                    <span class="badge badge--live">LIVE</span>
+                </div>
+            </div>
+
+            <nav class="header__nav">
+                <div class="nav-item nav-item--join">
+                    <svg class="nav-item__icon" viewBox="0 0 24 24" fill="#FF0000">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="nav-item__text">CSATLAKOZÁS</span>
+                </div>
+                <div class="nav-item">
+                    <svg class="nav-item__icon" viewBox="0 0 24 24" fill="#FF6600">
+                        <path d="M17.5 11.5c-1.5-2-3-3.5-3-6 0-.83.2-1.62.56-2.34-2.8 1.08-4.8 3.75-4.8 6.84 0 1.13.3 2.22.84 3.16-1.3-.84-2.1-2.3-2.1-3.96 0-.28.03-.55.08-.82-1.9 1.5-3.08 3.8-3.08 6.32 0 4.42 3.58 8 8 8s8-3.58 8-8c0-1.2-.28-2.34-.78-3.36-.25.5-.56.96-.92 1.36z"/>
+                    </svg>
+                    <div class="nav-item__text-group">
+                        <span class="nav-item__title">NÉPSZERŰ LISTA</span>
+                        <span class="nav-item__subtitle">21. helyezett</span>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <svg class="nav-item__icon" viewBox="0 0 24 24" fill="#9900FF">
+                        <path d="M12 2L2 12l10 10 10-10L12 2zm0 3.5l6.5 6.5-6.5 6.5-6.5-6.5L12 5.5z"/>
+                    </svg>
+                    <span class="nav-item__text">LIGA: GYÉMÁNT I</span>
+                </div>
+                <div class="nav-item">
+                    <svg class="nav-item__icon" viewBox="0 0 24 24" fill="#FFCC00">
+                        <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                    </svg>
+                    <span class="nav-item__text">2/5</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-item__text nav-item__text--blue">ELIT HULLÁM</span>
+                    <svg class="nav-item__icon" viewBox="0 0 24 24" fill="#00CCFF">
+                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1h-4v-2h4zM9 4c.55 0 1 .45 1 1h-4c0-.55.45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76 12 7.4l1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
+                    </svg>
+                </div>
+            </nav>
+
+            <div class="header__user-area">
+                <div class="user-stats">
+                    <svg class="user-stats__icon" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                    <div class="user-stats__text">
+                        <span class="user-stats__count">1 245</span>
+                        <span class="user-stats__label">NÉZŐK</span>
+                    </div>
+                </div>
+                <button class="btn btn--live">ÉLŐ</button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- LEFT COLUMN -->
+            <aside class="sidebar sidebar--left">
+                <!-- Timer Panel -->
+                <section class="panel panel--timer">
+                    <h2 class="panel__title">HÁTRALEVŐ IDŐ</h2>
+                    <div class="timer">
+                        <svg class="timer__svg" viewBox="0 0 120 120">
+                            <defs>
+                                <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FF6600" />
+                                    <stop offset="100%" stop-color="#FFCC00" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="timer__bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="timer__progress" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="timer__content">
+                            <span class="timer__value">20</span>
+                            <span class="timer__label">MÁSODPERC</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Live Status Panel -->
+                <section class="panel panel--status">
+                    <h2 class="panel__title panel__title--left">LIVE STÁTUSZ</h2>
+                    <div class="status-list">
+                        <div class="status-item">
+                            <svg class="status-item__icon" viewBox="0 0 24 24" fill="#888">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                            </svg>
+                            <div class="status-item__info">
+                                <span class="status-item__label">NÉZŐK</span>
+                                <span class="status-item__value">1 245</span>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <svg class="status-item__icon" viewBox="0 0 24 24" fill="#888">
+                                <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                            </svg>
+                            <div class="status-item__info">
+                                <span class="status-item__label">JÁTÉKOSOK</span>
+                                <span class="status-item__value">638</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Controls Panel -->
+                <section class="panel panel--controls">
+                    <button class="control-btn" aria-label="Hang">
+                        <svg viewBox="0 0 24 24" fill="#A855F7">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </button>
+                    <button class="control-btn" aria-label="Zene">
+                        <svg viewBox="0 0 24 24" fill="#A855F7">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </button>
+                    <button class="control-btn" aria-label="Értesítések">
+                        <svg viewBox="0 0 24 24" fill="#A855F7">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                        </svg>
+                    </button>
+                </section>
+            </aside>
+
+            <!-- CENTER COLUMN (GAME AREA) -->
+            <section class="game-area">
+                <div class="game-area__bg">
+                    <div class="neon-line neon-line--left"></div>
+                    <div class="neon-line neon-line--right"></div>
+                </div>
+                
+                <h1 class="game-area__title">KÉRDÉS AKTUÁLIS</h1>
+                
+                <div class="product-display">
+                    <!-- Simplified SVG representation of the bottle -->
+                    <svg class="product-image" viewBox="0 0 100 300" aria-label="Coca-Cola 0,5 L">
+                        <defs>
+                            <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#111" />
+                                <stop offset="20%" stop-color="#333" />
+                                <stop offset="50%" stop-color="#000" />
+                                <stop offset="80%" stop-color="#333" />
+                                <stop offset="100%" stop-color="#111" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M35,20 C35,10 65,10 65,20 L65,40 C65,60 85,80 85,150 C85,250 75,290 50,290 C25,290 15,250 15,150 C15,80 35,60 35,40 Z" fill="url(#bottleGrad)" stroke="#222" stroke-width="1"/>
+                        <rect x="17" y="120" width="66" height="50" fill="#E60000"/>
+                        <text x="50" y="145" fill="white" font-family="cursive" font-size="14" font-weight="bold" text-anchor="middle">Coca-Cola</text>
+                        <text x="50" y="160" fill="white" font-family="sans-serif" font-size="6" text-anchor="middle">0,5 L</text>
+                        <rect x="40" y="5" width="20" height="15" fill="#E60000" rx="2"/>
+                        <path d="M15,150 C15,250 25,290 50,290 C75,290 85,250 85,150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                    </svg>
+                    
+                    <div class="podium">
+                        <div class="podium__top"></div>
+                        <div class="podium__base"></div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h2 class="question-text">Mennyibe kerül ez a termék?</h2>
+                    <p class="question-subtitle">Coca-Cola 0,5 L</p>
+                </div>
+
+                <div class="answers-grid">
+                    <button class="answer-btn answer-btn--a">
+                        <span class="answer-btn__letter">A</span>
+                        <span class="answer-btn__text">450 Ft</span>
+                    </button>
+                    <button class="answer-btn answer-btn--b">
+                        <span class="answer-btn__letter">B</span>
+                        <span class="answer-btn__text">300 Ft</span>
+                    </button>
+                    <button class="answer-btn answer-btn--c">
+                        <span class="answer-btn__letter">C</span>
+                        <span class="answer-btn__text">550 Ft</span>
+                    </button>
+                    <button class="answer-btn answer-btn--d">
+                        <span class="answer-btn__letter">D</span>
+                        <span class="answer-btn__text">500 Ft</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN -->
+            <aside class="sidebar sidebar--right">
+                <!-- Leaderboard Panel -->
+                <section class="panel panel--leaderboard">
+                    <div class="leaderboard-header">
+                        <h2 class="panel__title panel__title--yellow">
+                            <svg class="icon-inline" viewBox="0 0 24 24" fill="#FFCC00">
+                                <path d="M19 3h-2V2h-2v1H9V2H7v1H5c-1.1 0-2 .9-2 2v3c0 2.4 1.66 4.43 3.89 4.9.43 2.1 2.2 3.79 4.36 4.07V19H8v2h8v-2h-3.25v-2.03c2.16-.28 3.93-1.97 4.36-4.07C20.34 12.43 22 10.4 22 8V5c0-1.1-.9-2-2-2zm-14 5V5h2v3H5zm14 0h-2V5h2v3z"/>
+                            </svg>
+                            TOP 25
+                        </h2>
+                        <div class="refresh-info">
+                            <svg class="icon-inline icon-inline--small" viewBox="0 0 24 24" fill="#FFCC00">
+                                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                            </svg>
+                            <span>4 MP MÚLVA VÁLTÁS</span>
+                        </div>
+                    </div>
+
+                    <div class="leaderboard-table">
+                        <div class="leaderboard-row leaderboard-row--header">
+                            <span>HELY</span>
+                            <span>JÁTÉKOS</span>
+                            <span>PONT</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank rank--1">1</span>
+                            <span class="player">
+                                <svg class="icon-inline" viewBox="0 0 24 24" fill="#00CCFF"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+                                Alex
+                            </span>
+                            <span class="score score--highlight">12 450</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank rank--2">2</span>
+                            <span class="player">
+                                <svg class="icon-inline" viewBox="0 0 24 24" fill="#FF6600"><path d="M17.5 11.5c-1.5-2-3-3.5-3-6 0-.83.2-1.62.56-2.34-2.8 1.08-4.8 3.75-4.8 6.84 0 1.13.3 2.22.84 3.16-1.3-.84-2.1-2.3-2.1-3.96 0-.28.03-.55.08-.82-1.9 1.5-3.08 3.8-3.08 6.32 0 4.42 3.58 8 8 8s8-3.58 8-8c0-1.2-.28-2.34-.78-3.36-.25.5-.56.96-.92 1.36z"/></svg>
+                                Norbi
+                            </span>
+                            <span class="score score--highlight">10 580</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank rank--3">3</span>
+                            <span class="player">
+                                <svg class="icon-inline" viewBox="0 0 24 24" fill="#FFCC00"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/></svg>
+                                Vivi
+                            </span>
+                            <span class="score score--highlight">9 870</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank">4</span>
+                            <span class="player">Máté</span>
+                            <span class="score score--highlight">8 760</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank">5</span>
+                            <span class="player">
+                                <svg class="icon-inline" viewBox="0 0 24 24" fill="#00CCFF"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
+                                Krisztián
+                            </span>
+                            <span class="score score--highlight">7 450</span>
+                        </div>
+                        <div class="leaderboard-row leaderboard-row--ellipsis">
+                            <span>...</span>
+                        </div>
+                        <div class="leaderboard-row">
+                            <span class="rank">25</span>
+                            <span class="player">Péter</span>
+                            <span class="score">890</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-full-list">
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="#FFF">
+                            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+                        </svg>
+                        TELJES RANGLISTA
+                    </button>
+                </section>
+
+                <!-- Gifts Panel -->
+                <section class="panel panel--gifts">
+                    <h2 class="panel__title panel__title--left">AKTUÁLIS AJÁNDÉKOK</h2>
+                    
+                    <div class="gift-section">
+                        <h3 class="gift-section__title">2x AJÁNDÉK</h3>
+                        <div class="gift-grid gift-grid--3">
+                            <div class="gift-item">
+                                <div class="gift-icon-wrapper">
+                                    <svg viewBox="0 0 50 50" class="gift-svg">
+                                        <path d="M25 10 C15 10 10 20 20 30 C30 40 25 45 25 45 C25 45 20 40 30 30 C40 20 35 10 25 10 Z" fill="#FF3366"/>
+                                        <path d="M25 45 Q20 35 15 35 Q20 40 25 45" fill="#228B22"/>
+                                    </svg>
+                                </div>
+                                <span class="gift-name">Rózsa</span>
+                                <span class="gift-price"><span class="coin"></span> 1</span>
+                            </div>
+                            <div class="gift-item">
+                                <div class="gift-icon-wrapper">
+                                    <svg viewBox="0 0 50 50" class="gift-svg">
+                                        <rect x="15" y="20" width="20" height="25" rx="5" fill="#FF99CC" stroke="#FFF" stroke-width="2"/>
+                                        <circle cx="25" cy="12" r="6" fill="#FFCC00"/>
+                                        <rect x="22" y="18" width="6" height="4" fill="#CCC"/>
+                                    </svg>
+                                </div>
+                                <span class="gift-name">Parfüm</span>
+                                <span class="gift-price"><span class="coin"></span> 20</span>
+                            </div>
+                            <div class="gift-item">
+                                <div class="gift-icon-wrapper">
+                                    <svg viewBox="0 0 50 50" class="gift-svg">
+                                        <circle cx="25" cy="25" r="18" fill="#FF99CC" stroke="#D2691E" stroke-width="4"/>
+                                        <circle cx="25" cy="25" r="6" fill="#090514"/>
+                                        <circle cx="15" cy="20" r="1.5" fill="#FFF"/>
+                                        <circle cx="35" cy="22" r="1.5" fill="#00FFFF"/>
+                                        <circle cx="25" cy="12" r="1.5" fill="#FFFF00"/>
+                                        <circle cx="20" cy="35" r="1.5" fill="#FF00FF"/>
+                                    </svg>
+                                </div>
+                                <span class="gift-name">Fánk</span>
+                                <span class="gift-price"><span class="coin"></span> 30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gift-section">
+                        <h3 class="gift-section__title">3x AJÁNDÉK</h3>
+                        <div class="gift-grid gift-grid--2">
+                            <div class="gift-item">
+                                <div class="gift-icon-wrapper">
+                                    <svg viewBox="0 0 50 50" class="gift-svg">
+                                        <path d="M10 35 Q25 40 40 35 L45 38 Q25 45 5 38 Z" fill="#8B4513"/>
+                                        <path d="M15 35 L18 15 Q25 10 32 15 L35 35 Z" fill="#A0522D"/>
+                                        <rect x="16" y="30" width="18" height="5" fill="#333"/>
+                                    </svg>
+                                </div>
+                                <span class="gift-name">Kalap</span>
+                                <span class="gift-price"><span class="coin"></span> 99</span>
+                            </div>
+                            <div class="gift-item">
+                                <div class="gift-icon-wrapper">
+                                    <svg viewBox="0 0 50 50" class="gift-svg">
+                                        <path d="M15 20 L10 10 L20 15 Z" fill="#D2691E"/>
+                                        <path d="M35 20 L40 10 L30 15 Z" fill="#D2691E"/>
+                                        <circle cx="25" cy="30" r="15" fill="#F4A460"/>
+                                        <circle cx="25" cy="35" r="8" fill="#FFF"/>
+                                        <circle cx="20" cy="25" r="2" fill="#000"/>
+                                        <circle cx="30" cy="25" r="2" fill="#000"/>
+                                        <circle cx="25" cy="32" r="2.5" fill="#000"/>
+                                    </svg>
+                                </div>
+                                <span class="gift-name">Corgi</span>
+                                <span class="gift-price"><span class="coin"></span> 299</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Level Panel -->
+                <section class="panel panel--level">
+                    <h2 class="panel__title">KÖVETKEZŐ SZINT</h2>
+                    <div class="progress-bar">
+                        <div class="progress-dot progress-dot--active"></div>
+                        <div class="progress-line progress-line--active"></div>
+                        <div class="progress-dot progress-dot--active"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-dot"></div>
+                    </div>
+                    <p class="level-hint">Még 2 helyes válasz a következő szinthez!</p>
+                </section>
+            </aside>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer__item">
+                <svg class="icon-

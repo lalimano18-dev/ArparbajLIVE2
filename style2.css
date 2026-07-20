@@ -1,0 +1,544 @@
+/* ================================================================
+   ÁrPárbaj LIVE - PRÉMIUM TV-SHOW / LIVE KVIZMŰSOR
+   Referencia vizuális stílusú teljes átállítás
+   ================================================================ */
+
+/* === ALAP === */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:'Inter','Segoe UI',Arial,sans-serif;background:#05060e;color:#fff}
+body{background:radial-gradient(ellipse at 50% 30%,#1a1040 0%,#0a0620 25%,#040312 55%)}
+
+/* === FŐ LAYOUT === */
+.broadcast{width:100vw;height:100vh;display:flex;flex-direction:column;padding:6px 10px;gap:6px}
+
+/* ================================================================
+   FELSŐ STÁTUSZSÁV - magasabb, teljes szélesség, különleges neon keret
+   ================================================================ */
+.topbar{
+  height:62px;min-height:62px;
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#0c0a18,#0a0814);
+  border:1px solid rgba(160,100,255,.3);
+  border-radius:12px;
+  padding:0 16px;
+  box-shadow:0 0 35px rgba(140,50,255,.18);
+  position:relative;z-index:10;
+}
+.topbar::after{content:"";position:absolute;top:0;left:4%;right:4%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,255,.6),transparent)}
+
+.topbar-logo{display:flex;align-items:baseline;gap:3px;margin-right:10px;flex-shrink:0}
+.logo-text{font-size:28px;font-weight:950;color:#ffd43b;transform:skew(-6deg);text-shadow:0 0 28px rgba(255,200,0,.4)}
+.logo-text-accent{font-size:28px;font-weight:950;color:#ff6b9d;transform:skew(-6deg);text-shadow:0 0 28px rgba(255,50,100,.4)}
+.logo-badge{font-size:12px;font-weight:900;background:linear-gradient(135deg,#ed153b,#ff6b3d);color:#fff;padding:3px 10px;border-radius:4px;margin-left:8px;letter-spacing:1px;box-shadow:0 0 20px rgba(237,21,59,.5)}
+
+.topbar-divider{width:1px;height:24px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.15),transparent);margin:0 8px;flex-shrink:0}
+.topbar-item{font-size:13px;font-weight:800;color:#c8cce0;white-space:nowrap;line-height:1.25}
+.topbar-small{font-size:10px;font-weight:700;color:#888cb0;display:block;margin-top:2px}
+.topbar-diff{color:#88ffb0}
+.topbar-heart-text{font-size:13px;font-weight:900;color:#ff88b8;letter-spacing:.5px}
+.topbar-spacer{flex:1;min-width:8px}
+.topbar-viewers{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.topbar-viewer-num{font-size:20px;font-weight:900;color:#e8ecff}
+.topbar-viewer-label{font-size:10px;font-weight:800;color:#8a90b8;letter-spacing:1px}
+.topbar-vsep{width:1px;height:18px;background:rgba(255,255,255,.08);margin:0 8px;flex-shrink:0}
+.topbar-live-badge{
+  font-size:13px;font-weight:900;color:#fff;letter-spacing:2px;
+  background:linear-gradient(135deg,#e01030,#ff3055);
+  padding:6px 16px;border-radius:4px;
+  box-shadow:0 0 30px rgba(224,16,48,.5);
+  flex-shrink:0;
+  animation:liveBadgePulse 1.5s ease-in-out infinite;
+}
+@keyframes liveBadgePulse{0%,100%{box-shadow:0 0 30px rgba(224,16,48,.5)}50%{box-shadow:0 0 50px rgba(224,16,48,.75)}}
+
+/* ================================================================
+   3 OSZLOPOS FŐ RÁCS: BAL 18% | KÖZÉP 48% | JOBB 34%
+   ================================================================ */
+.main-grid{
+  flex:1;min-height:0;
+  display:grid;
+  grid-template-columns:18% 48% 34%;
+  gap:8px;
+}
+
+/* === BAL OSZLOP (18%) === */
+.col-left{display:flex;flex-direction:column;gap:8px;min-width:0}
+
+.timerbox{
+  flex:1;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(160,120,255,.25);
+  border-radius:16px;
+  padding:12px 10px;
+  box-shadow:0 0 40px rgba(140,50,255,.15);
+  display:flex;flex-direction:column;align-items:center;
+  position:relative;overflow:hidden;
+}
+.timerbox::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,255,.6),transparent)}
+.timerbox h3{text-align:center;margin:0 0 10px;font-size:12px;letter-spacing:2px;color:#c8cce0;font-weight:900}
+
+.timer-ring{
+  width:min(170px,18vw);height:min(170px,18vw);
+  margin:4px auto;border-radius:50%;display:grid;place-items:center;padding:10px;position:relative;
+}
+.timer-ring::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(#ffde3b 0% var(--timer-pct,25%),#ffaa00 var(--timer-pct,25%) 54%,#1a1a24 54% 100%);
+  mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));
+  box-shadow:0 0 50px rgba(255,170,0,.22);
+}
+.timer-ring>div{
+  width:100%;height:100%;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 50%,#0e1326,#05080f);
+  box-shadow:inset 0 0 60px #000;position:relative;z-index:1;
+}
+#ido{
+  font-size:clamp(44px,5vw,68px);font-weight:950;line-height:.85;
+  background:linear-gradient(180deg,#fff,#ffd43b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:none;filter:drop-shadow(0 0 18px rgba(255,210,60,.15));
+}
+.timer-ring small{font-size:12px;margin-top:6px;color:#8890b8;letter-spacing:2px;font-weight:800}
+
+#ido.urgent{animation:urgentPulse .5s infinite alternate}
+@keyframes urgentPulse{to{transform:scale(1.15);-webkit-text-fill-color:#ff405e;filter:drop-shadow(0 0 25px #ff405e)}}
+
+.statusbox{
+  flex:0 0 auto;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(200,170,50,.2);
+  border-radius:16px;
+  padding:10px;
+  box-shadow:0 0 35px rgba(140,50,255,.08);
+  position:relative;overflow:hidden;
+}
+.statusbox::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,170,50,.3),transparent)}
+.statusbox h3{text-align:center;margin:0 0 8px;font-size:12px;letter-spacing:2px;color:#c8cce0;font-weight:900}
+
+.stat{display:flex;gap:10px;align-items:center;padding:10px;margin-top:6px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.02)}
+.stat:first-child{margin-top:0}
+.stat>span{font-size:22px;flex-shrink:0}
+.stat div{font-size:12px;color:#9ca0c0;line-height:1.2}
+.stat b{display:block;color:#fff;font-size:clamp(18px,2vw,28px);margin-top:2px;font-weight:900}
+
+/* === KÖZÉPSŐ JÁTÉKTÉR (48%) === */
+.col-center{
+  display:flex;flex-direction:column;
+  min-width:0;
+}
+
+.game-stage{
+  flex:1;min-height:0;
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,#0e0c1a,#080714);
+  border:1px solid rgba(140,70,255,.25);
+  border-radius:16px;
+  padding:6px 10px;
+  box-shadow:0 0 50px rgba(120,40,255,.1);
+  position:relative;overflow:hidden;
+}
+.game-stage::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(180,120,255,.5),transparent)}
+.game-stage::after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(60,25,110,.2),transparent 60%);pointer-events:none}
+
+.question-heading{
+  text-align:center;font-size:15px;font-weight:900;letter-spacing:3px;
+  color:#c088ff;margin-bottom:2px;text-shadow:0 0 25px rgba(160,80,255,.2);
+}
+
+.product-stage{
+  flex:1 1 auto;min-height:180px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+  background:
+    radial-gradient(ellipse at 35% 30%,rgba(160,80,255,.2),transparent 50%),
+    radial-gradient(ellipse at 70% 30%,rgba(255,200,0,.2),transparent 50%),
+    radial-gradient(ellipse at 50% 50%,rgba(10,8,20,.85),rgba(6,5,14,.95));
+  border-radius:14px;margin:0 2px;
+  border:1px solid rgba(160,80,255,.2);
+}
+
+.stage-left-glow{
+  position:absolute;left:-30px;top:5%;bottom:5%;width:60px;
+  background:linear-gradient(180deg,transparent,rgba(160,80,255,.2),transparent);
+  filter:blur(20px);pointer-events:none;z-index:0;
+}
+.stage-right-glow{
+  position:absolute;right:-30px;top:5%;bottom:5%;width:60px;
+  background:linear-gradient(180deg,transparent,rgba(255,200,0,.2),transparent);
+  filter:blur(20px);pointer-events:none;z-index:0;
+}
+
+.product-frame{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;max-width:75%;max-height:65%}
+.product-frame img{display:none;max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;background:transparent;box-shadow:0 0 80px rgba(255,255,255,.06),0 20px 60px rgba(0,0,0,.6)}
+
+.stage-platform{
+  position:absolute;bottom:6px;left:15%;right:15%;height:20px;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 50%,rgba(200,130,255,.4),transparent 70%);
+  filter:blur(12px);pointer-events:none;z-index:0;
+  box-shadow:0 0 50px rgba(160,80,255,.4);
+}
+
+.question-text{
+  text-align:center;font-size:clamp(18px,1.8vw,26px);font-weight:900;
+  color:#f0f0ff;margin:6px 0 2px;letter-spacing:.5px;
+}
+.product-name{
+  text-align:center;font-size:clamp(22px,2.2vw,32px);font-weight:950;
+  color:#ffd75e;margin:0 0 10px;letter-spacing:.5px;
+  text-shadow:0 0 30px rgba(255,200,0,.22);
+}
+
+/* === 4 VÁLASZ 2×2 - nagyobb, erősebb neon === */
+.answers{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:0 0 auto;margin-top:4px}
+
+.answer-card{
+  height:clamp(60px,7.5vh,90px);
+  display:flex;align-items:center;gap:16px;padding:0 14px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#0b0e22,#0a0816);
+  box-shadow:0 0 35px rgba(120,50,255,.1),inset 0 0 30px rgba(20,80,255,.02);
+  transition:all .2s ease;position:relative;overflow:hidden;cursor:default;
+  border:1px solid rgba(180,80,255,.3);
+}
+.answer-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,120,255,.3),transparent)}
+.answer-card:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(160,60,255,.18);border-color:rgba(190,100,255,.6)}
+
+.answer-card:nth-child(1){border-color:rgba(160,80,255,.4);background:linear-gradient(135deg,#180e38,#0e0824)}
+.answer-card:nth-child(1) .answer-letter{background:linear-gradient(135deg,#8a2be2,#7a2ae2);border-color:rgba(190,100,255,.6);box-shadow:0 0 25px rgba(140,60,255,.35)}
+.answer-card:nth-child(2){border-color:rgba(255,50,140,.35);background:linear-gradient(135deg,#380a24,#1e0614)}
+.answer-card:nth-child(2) .answer-letter{background:linear-gradient(135deg,#ff3070,#e02060);border-color:rgba(255,70,150,.5);box-shadow:0 0 25px rgba(255,50,140,.3)}
+.answer-card:nth-child(3){border-color:rgba(30,160,255,.35);background:linear-gradient(135deg,#0a2438,#061420)}
+.answer-card:nth-child(3) .answer-letter{background:linear-gradient(135deg,#2090ff,#1880e0);border-color:rgba(50,150,255,.5);box-shadow:0 0 25px rgba(30,160,255,.3)}
+.answer-card:nth-child(4){border-color:rgba(255,190,30,.35);background:linear-gradient(135deg,#382808,#1e1006)}
+.answer-card:nth-child(4) .answer-letter{background:linear-gradient(135deg,#ffaa20,#ff9020);border-color:rgba(255,190,40,.5);box-shadow:0 0 25px rgba(255,200,0,.25)}
+
+.answer-letter{
+  width:48px;height:48px;display:grid;place-items:center;
+  border-radius:50%;font-size:22px;font-weight:900;color:#fff;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,.08);
+}
+.answer-price{font-size:clamp(20px,2vw,26px);font-weight:950;color:#e8e8ff;letter-spacing:.3px;text-shadow:0 0 12px rgba(200,200,255,.15)}
+
+.result{
+  min-height:28px;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;
+  background:rgba(0,0,0,.2);border-radius:10px;padding:4px 12px;flex:0 0 auto;
+}
+.result .correct-label{font-size:12px;font-weight:900;color:#62ffba;letter-spacing:1px}
+.result strong{font-size:22px;color:#58eaff;text-shadow:0 0 18px rgba(88,234,255,.18)}
+.result span{font-size:18px;font-weight:800;color:#ffd75e}
+
+/* === ALSÓ INFO SÁV === */
+.bottom-info{
+  height:34px;min-height:34px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:12px;font-weight:800;color:#a0a4c0;letter-spacing:.5px;
+  background:rgba(0,0,0,.2);border-radius:10px;margin-top:6px;padding:0 12px;
+}
+.info-dot{color:#52536a;font-size:8px}
+
+/* === JOBB OLDAL (34%) === */
+.col-right{
+  display:flex;flex-direction:column;gap:8px;min-width:0;
+  height:100%;
+}
+
+/* === RANGLISTA (felső) === */
+.col-rank{
+  flex:1 1 auto;min-height:0;overflow:hidden;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(200,170,50,.2);
+  border-radius:16px;padding:0;
+  box-shadow:0 0 40px rgba(120,80,180,.1);
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.col-rank::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,170,50,.5),transparent)}
+
+.rank-title{
+  height:42px;min-height:42px;
+  display:flex;align-items:center;justify-content:center;
+  color:#ffd126;font-size:16px;font-weight:950;letter-spacing:1px;
+  border-bottom:1px solid rgba(200,170,50,.12);
+  background:linear-gradient(180deg,#160e02,#0c0a16);
+  position:relative;z-index:5;
+}
+.rank-subtitle{
+  height:24px;min-height:24px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#888cb0;letter-spacing:1px;
+  background:rgba(9,7,20,.7);border-bottom:1px solid rgba(255,255,255,.02);
+}
+.rank-subtitle b{color:#51dfff;margin:0 3px;font-weight:900}
+
+.rankheaders{
+  flex:0 0 26px;padding:0 10px;
+  background:rgba(7,9,18,.9);
+  display:grid;grid-template-columns:34px 1fr 64px;align-items:center;
+  font-size:10px;font-weight:900;color:#888cb0;letter-spacing:1px;
+  border-bottom:1px solid rgba(255,255,255,.02);
+}
+.rankheaders span:last-child{text-align:right}
+
+#toplista{
+  flex:1;min-height:0;overflow:hidden;padding:0 10px;
+}
+.rank-row{
+  display:grid;grid-template-columns:34px 1fr 64px;align-items:center;
+  height:calc((100% - 16px)/25);min-height:20px;
+  padding:0 2px;border-bottom:1px solid rgba(255,255,255,.015);
+  font-size:12px;font-weight:700;transition:background .15s;
+  animation:rankFade .3s ease-out both;
+}
+.rank-row:hover{background:rgba(255,255,255,.015)}
+.rank-pos{font-weight:900;font-size:12px;color:#777ca0}
+.rank-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c8cce0}
+.rank-score{text-align:right;font-weight:900;color:#88ddff;font-size:12px}
+
+.rank-row.top-1{background:linear-gradient(90deg,rgba(255,210,0,.1),transparent)}
+.rank-row.top-1 .rank-pos{color:#ffd324;font-size:13px}
+.rank-row.top-2{background:linear-gradient(90deg,rgba(200,200,230,.06),transparent)}
+.rank-row.top-2 .rank-pos{color:#c0c4e0}
+.rank-row.top-3{background:linear-gradient(90deg,rgba(200,120,50,.06),transparent)}
+.rank-row.top-3 .rank-pos{color:#d48a4a}
+
+.rank-footer{
+  height:30px;min-height:30px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:#666a88;letter-spacing:1px;
+  border-top:1px solid rgba(255,255,255,.02);
+  background:rgba(7,9,18,.9);
+}
+
+/* === AJÁNDÉKOK (alsó) === */
+.col-gift{
+  flex:0 0 auto;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(180,60,200,.2);
+  border-radius:16px;padding:10px 10px;
+  box-shadow:0 0 40px rgba(140,40,200,.1);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.col-gift::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,120,255,.5),transparent)}
+.col-gift h2{text-align:center;font-size:13px;letter-spacing:2px;color:#c088ff;margin:0 0 8px;font-weight:900;text-shadow:0 0 18px rgba(160,80,255,.22)}
+
+.gift-section{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+.gift-multiplier-label{
+  font-size:12px;font-weight:900;color:#ffa030;letter-spacing:1px;
+  text-shadow:0 0 14px rgba(255,160,48,.2);
+}
+.gift-multiplier-label-3x{
+  font-size:12px;font-weight:900;color:#ff53a8;letter-spacing:1px;
+  text-shadow:0 0 14px rgba(255,83,168,.2);
+}
+
+.gift-rules{display:flex;gap:8px;margin-top:4px}
+.gift-2x .gift-rule{flex:1!important}
+.gift-3x .gift-rule{flex:1!important}
+
+.gift-rule{
+  display:flex!important;flex-direction:column;align-items:center;justify-content:center;
+  border:1px solid rgba(180,60,200,.15);border-radius:12px;
+  background:linear-gradient(180deg,rgba(60,20,120,.25),rgba(20,10,40,.25));
+  text-align:center;position:relative;overflow:hidden;padding:6px 4px!important;
+}
+.gift-rule::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,120,255,.3),transparent)}
+
+.gift-icon-img{width:clamp(40px,5.5vh,68px);height:clamp(40px,5.5vh,68px);object-fit:contain;filter:drop-shadow(0 0 16px rgba(180,80,255,.15));margin-bottom:4px}
+.gift-points{font-size:11px!important;line-height:1.1!important;margin:2px 0!important;color:#b0b4d0!important;font-weight:800!important;letter-spacing:.3px}
+.gift-mult{font-size:clamp(18px,2.5vh,28px)!important;line-height:1!important;margin:1px 0!important;color:#ff53a8!important;text-shadow:0 0 22px rgba(255,83,168,.35);font-weight:950}
+
+/* === OVERLAYS === */
+.pause-overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.85);place-items:center;font-size:60px;backdrop-filter:blur(10px)}
+.pause-overlay.show{display:grid}
+.pause-overlay div{background:linear-gradient(135deg,rgba(40,20,80,.95),rgba(16,8,30,.95));border:1px solid rgba(255,255,255,.06);border-radius:24px;padding:30px 60px;font-weight:950;letter-spacing:5px;box-shadow:0 0 80px rgba(120,40,240,.18)}
+
+#podiumOverlay{display:none;position:fixed;inset:0;z-index:99999!important;background:radial-gradient(circle at 50% 45%,#26114c,#080616 42%,#010208 80%)!important;overflow:hidden!important}
+#podiumOverlay.show{display:flex!important}
+.podium-glow{position:absolute;inset:-30%;background:repeating-conic-gradient(rgba(255,199,40,.06) 0 5deg,transparent 5deg 16deg);animation:spin 20s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.podium-content{position:relative;z-index:3;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.final-kicker{z-index:3;color:#ffce2e;font-weight:950;letter-spacing:5px;font-size:16px;text-shadow:0 0 20px #ff8b00}
+.podium-title{font-size:clamp(36px,4.5vw,54px)!important;margin:4px!important;color:#ffd02c!important;font-weight:950;text-shadow:0 0 40px rgba(255,200,0,.15)}
+.podium-subtitle{font-size:16px;font-weight:900;margin-bottom:40px;color:#c0c4e0;letter-spacing:2px}
+.podium-stage{display:flex;align-items:flex-end;gap:18px;z-index:3!important}
+.winner-card{position:relative;width:clamp(160px,18vw,220px)!important;padding:18px 10px 50px!important;background:linear-gradient(180deg,rgba(28,24,62,.96),rgba(10,12,28,.98))!important;box-shadow:0 25px 80px #000,0 0 40px rgba(156,61,255,.12)!important;border-radius:16px;text-align:center}
+.winner-card.gold{transform:translateY(-50px) scale(1.06)!important;border:2px solid #ffd22f!important;box-shadow:0 0 60px rgba(255,204,30,.25),0 25px 80px #000!important}
+.winner-card.silver{border:2px solid rgba(200,210,230,.18)!important}
+.winner-card.bronze{border:2px solid rgba(200,120,50,.18)!important}
+.avatar-ring{font-size:46px;filter:drop-shadow(0 0 18px rgba(255,220,80,.18))}
+.crown{position:absolute;top:-50px;left:0;right:0;font-size:46px;animation:crownFloat 1.4s ease-in-out infinite alternate}@keyframes crownFloat{to{transform:translateY(-8px) scale(1.06)}}
+.place{font-size:13px;font-weight:950;letter-spacing:2px;color:#d4d5e6;margin-top:6px}
+.winner-card.gold .place{color:#ffd22f}
+.pname{font-size:clamp(18px,2vw,24px)!important;font-weight:900!important;margin:8px 0!important;color:#f0f0ff}
+.pscore{font-size:16px!important;font-weight:900!important;color:#58eaff!important}
+.pedestal{position:absolute;left:0;right:0;bottom:0;height:44px;display:grid;place-items:center;font-size:24px;font-weight:950;border-radius:0 0 13px 13px}
+.gold .pedestal{background:linear-gradient(135deg,#d49b00,#ffd73c);color:#442900}
+.silver .pedestal{background:linear-gradient(135deg,#7c899a,#c0c8d8);color:#27303b}
+.bronze .pedestal{background:linear-gradient(135deg,#8c4926,#d48a4a);color:#3b1a0c}
+.champion-text{font-size:18px!important;color:#fff!important;text-shadow:0 0 18px #ff3ba7;margin-top:20px!important;font-weight:900;letter-spacing:1px}
+#fireworks{position:absolute;inset:0;pointer-events:none}
+
+/* === ANIMÁCIÓK === */
+@keyframes rankFade{from{opacity:0;transform:translateX(-4px)}to{opacity:1;transform:translateX(0)}}
+.answer-card{animation:rankFade .3s ease-out both}
+.answer-card:nth-child(1){animation-delay:.03s}
+.answer-card:nth-child(2){animation-delay:.06s}
+.answer-card:nth-child(3){animation-delay:.09s}
+.answer-card:nth-child(4){animation-delay:.12s}
+
+/* === RESZPONZÍV === */
+@media(max-width:1366px){
+  .broadcast{padding:5px 8px;gap:5px}
+  .topbar{height:54px;min-height:54px;padding:0 12px;gap:6px}
+  .logo-text,.logo-text-accent{font-size:22px}
+  .topbar-item{font-size:11px}
+  .main-grid{grid-template-columns:16% 48% 36%;gap:6px}
+  .timer-ring{width:min(140px,17vw);height:min(140px,17vw)}
+  #ido{font-size:clamp(34px,3.8vw,50px)}
+  .answer-card{height:clamp(50px,6vh,66px);gap:10px;padding:0 10px}
+  .answer-letter{width:38px;height:38px;font-size:17px}
+  .product-frame{max-width:72%;max-height:60%}
+  .gift-icon-img{width:clamp(32px,4vh,50px);height:clamp(32px,4vh,50px)}
+}
+@media(max-width:1024px){
+  .main-grid{grid-template-columns:14% 50% 36%;gap:5px}
+  .topbar{height:48px;min-height:48px;padding:0 8px}
+  .logo-text,.logo-text-accent{font-size:20px}
+  .topbar-item{font-size:10px}
+  .timer-ring{width:min(120px,15vw);height:min(120px,15vw)}
+  #ido{font-size:clamp(28px,3vw,40px)}
+  .answer-card{height:clamp(44px,5.5vh,56px);gap:8px;padding:0 8px}
+  .answer-letter{width:32px;height:32px;font-size:15px}
+  .answer-price{font-size:18px}
+  .question-text{font-size:16px}
+  .product-name{font-size:20px}
+  .rank-row{font-size:11px}
+  .gift-icon-img{width:clamp(28px,3.5vh,42px);height:clamp(28px,3.5vh,42px)}
+}
+
+/* ================================================================
+   HTML–CSS KOMPATIBILITÁSI JAVÍTÁS
+   Az index(2).html aktuális osztályneveihez
+   ================================================================ */
+
+.topbar-left,.topbar-right,.topbar-brand,.topbar-chip,.chip-body,
+.viewer-meta,.stat-body,.status-icons,.rank-header,.gift-row{
+  display:flex;align-items:center;
+}
+.topbar-left{gap:8px;min-width:0}
+.topbar-right{gap:8px;flex-shrink:0}
+.topbar-brand{gap:3px;flex-shrink:0}
+.logo-icon{font-size:24px}
+.logo-x,.logo-y{
+  font-size:26px;font-weight:950;transform:skew(-6deg);
+  text-shadow:0 0 24px rgba(255,200,0,.35)
+}
+.logo-x{color:#ffd43b}
+.logo-y{color:#fff}
+.topbar-sep{width:1px;height:28px;background:rgba(255,255,255,.12);margin:0 4px}
+.topbar-chip{gap:7px;white-space:nowrap}
+.chip-icon{font-size:19px}
+.chip-body{flex-direction:column;align-items:flex-start}
+.chip-title,.chip-label{font-size:12px;font-weight:900;color:#d8daea}
+.chip-label{color:#ff9d35}
+.chip-small{font-size:9px;color:#888cb0;font-weight:700}
+.diff{color:#88ffb0}
+.viewer-icon{font-size:20px}
+.viewer-meta{flex-direction:column;align-items:flex-start}
+.live-badge{
+  font-size:13px;font-weight:950;letter-spacing:2px;padding:7px 14px;
+  border-radius:5px;background:linear-gradient(135deg,#e01030,#ff3055);
+  box-shadow:0 0 25px rgba(224,16,48,.45)
+}
+
+.panel-label{
+  text-align:center;font-size:12px;letter-spacing:2px;color:#c8cce0;
+  font-weight:900;margin-bottom:8px
+}
+.timer-inner{
+  width:100%;height:100%;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#0e1326,#05080f);
+  box-shadow:inset 0 0 60px #000;position:relative;z-index:1
+}
+.timer-number{
+  font-size:clamp(44px,5vw,68px);font-weight:950;line-height:.9;
+  background:linear-gradient(180deg,#fff,#ffd43b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.timer-unit{font-size:11px;margin-top:7px;color:#9298bb;letter-spacing:2px;font-weight:900}
+.stat-icon{font-size:22px}
+.stat-body{flex-direction:column;align-items:flex-start}
+.stat-label{font-size:10px;color:#999fbe;font-weight:800;letter-spacing:1px}
+.stat-value{font-size:25px!important}
+.status-icons{justify-content:center;gap:8px;margin-top:10px}
+.icon-btn{
+  width:42px;height:36px;border-radius:9px;border:1px solid rgba(200,70,255,.35);
+  background:rgba(60,15,80,.35);color:#ff8ee8;font-size:17px
+}
+
+.stage-glow{position:absolute;top:8%;bottom:8%;width:90px;filter:blur(18px);pointer-events:none}
+.stage-glow--left{left:-35px;background:linear-gradient(180deg,transparent,rgba(155,40,255,.4),transparent)}
+.stage-glow--right{right:-35px;background:linear-gradient(180deg,transparent,rgba(255,170,0,.35),transparent)}
+.platform-glow{
+  width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(220,100,255,.65),rgba(255,160,0,.15),transparent 70%)
+}
+
+/* A termékképnek látszania kell */
+.product-frame img{
+  display:block!important;
+  max-width:100%;max-height:100%;object-fit:contain;
+  background:transparent!important
+}
+
+/* HTML-ben használt ranglista osztályok */
+.rank-panel{
+  flex:1 1 auto;min-height:0;overflow:hidden;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(255,190,0,.35);border-radius:16px;
+  display:flex;flex-direction:column;box-shadow:0 0 35px rgba(255,180,0,.08)
+}
+.rank-header{flex-direction:column;flex-shrink:0}
+.rank-table{flex:1;min-height:0;display:flex;flex-direction:column}
+.rank-headers{
+  min-height:28px;padding:0 10px;
+  display:grid;grid-template-columns:40px 1fr 75px;align-items:center;
+  font-size:10px;font-weight:900;color:#888cb0;letter-spacing:1px;
+  border-bottom:1px solid rgba(255,255,255,.05)
+}
+.rank-headers span:last-child{text-align:right}
+.rank-body{flex:1;min-height:0;overflow:hidden;padding:0 10px}
+
+/* Ajándék panel */
+.gift-panel{
+  flex:0 0 40%;min-height:0;padding:10px;
+  background:linear-gradient(180deg,#0c0a18,#090714);
+  border:1px solid rgba(220,50,255,.35);border-radius:16px;
+  box-shadow:0 0 35px rgba(200,40,255,.08)
+}
+.gift-heading{text-align:center;font-size:14px;letter-spacing:2px;margin:0 0 8px;color:#eee}
+.gift-section{display:flex;flex-direction:column;height:calc(100% - 28px)}
+.gift-label{text-align:center;color:#ff62bd;font-size:14px;font-weight:950;margin:3px 0 6px}
+.gift-label--3x{color:#ff53a8}
+.gift-row{justify-content:center;gap:7px;min-height:0;flex:1}
+.gift-divider{height:1px;background:rgba(220,70,255,.25);margin:7px 0}
+
+/* Következő szint */
+.next-level{
+  min-height:50px;margin-top:5px;padding:5px 12px;
+  border:1px solid rgba(180,70,255,.25);border-radius:10px;
+  background:rgba(8,6,18,.85)
+}
+.next-level-label{text-align:center;font-size:10px;font-weight:900;letter-spacing:1px;color:#d0d2e2}
+.next-level-track{height:5px;background:#242431;border-radius:10px;margin:5px auto;width:70%;overflow:hidden}
+.next-level-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#ffd51e,#ff9d00);box-shadow:0 0 12px #ffc400}
+.next-level-text{text-align:center;font-size:9px;color:#8e92ad}
+
+/* A teljes felület 16:9 OBS/TikTok LIVE képernyőforráshoz igazítva */
+@media (aspect-ratio >= 16/9){
+  .broadcast{max-width:1920px;margin:0 auto}
+}

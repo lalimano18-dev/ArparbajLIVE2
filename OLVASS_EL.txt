@@ -1,0 +1,20 @@
+ÁRPÁRBAJ LIVE – VÉGLEGES DEMÓ ALAP
+
+1. Kattints az INDITAS.bat fájlra.
+2. Első indításkor az npm install telepíti a szükséges csomagokat.
+3. Játék: http://localhost:3000
+4. Admin: http://localhost:3000/admin
+
+Benne van:
+- 1920x1080-ra optimalizált LIVE grafika és animációk
+- admin termékfelvitel képfeltöltéssel
+- automatikus 3 közeli rossz ár
+- válaszok véletlen sorrendje
+- véletlen válaszgombok/betűk (I/L/O/Q kihagyva)
+- állítható kérdésidő, kérdések közti idő és kérdésszám
+- automatikus következő kérdés
+- szünet / folytatás / következő / leállítás
+- helyes/hibás/idő lejárt effektek
+- billentyűs válaszadás helyi teszteléshez
+
+Megjegyzés: a TikTok LIVE chat és gift API valódi bekötése külön integrációs lépés; a vizuális és játékmotor-alap erre készen továbbépíthető.

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ÁrPárbaj LIVE</title>
+<link rel="stylesheet" href="style.css?v=design5">
+</head>
+<body>
+<div id="pauseOverlay" class="pause-overlay"><div>⏸ SZÜNET</div></div>
+
+<div id="podiumOverlay">
+  <canvas id="fireworks"></canvas><div class="podium-glow"></div>
+  <div class="podium-content">
+    <div class="final-kicker">⚡ ÁRPÁRBAJ LIVE ⚡</div>
+    <h1 class="podium-title">EREDMÉNYHIRDETÉS!</h1>
+    <div class="podium-subtitle">GRATULÁLUNK A NYERTESEKNEK!</div>
+    <div class="podium-stage">
+      <div id="podium2" class="winner-card silver"><div class="avatar-ring"><img class="avatar-img" src="" alt=""><span class="avatar-emoji">🥈</span></div><div class="place">2. HELY</div><div class="pname">—</div><div class="pscore">0 PONT</div><div class="pedestal">2</div></div>
+      <div id="podium1" class="winner-card gold"><div class="crown">👑</div><div class="avatar-ring"><img class="avatar-img" src="" alt=""><span class="avatar-emoji">🥇</span></div><div class="place">BAJNOK</div><div class="pname">—</div><div class="pscore">0 PONT</div><div class="pedestal">1</div></div>
+      <div id="podium3" class="winner-card bronze"><div class="avatar-ring"><img class="avatar-img" src="" alt=""><span class="avatar-emoji">🥉</span></div><div class="place">3. HELY</div><div class="pname">—</div><div class="pscore">0 PONT</div><div class="pedestal">3</div></div>
+    </div>
+    <div class="champion-text">🎉 GRATULÁLUNK A DOBOGÓSOKNAK! 🎉</div>
+  </div>
+</div>
+
+<div class="broadcast">
+<header class="topbar">
+  <div class="brand"><b>⚡ Ár</b><strong>PÁRBAJ</strong><em>LIVE</em></div>
+  <div class="top-spacer"></div>
+  <div id="kerdesSzam" class="question-number-chip">KÉRDÉS 1/10</div>
+</header>
+
+<main class="layout">
+  <aside class="left-column">
+    <section class="panel timer-panel">
+      <h3>HÁTRALÉVŐ IDŐ</h3>
+      <div class="timer-ring"><div class="timer-core"><b id="ido">20</b><span>MÁSODPERC</span></div></div>
+    </section>
+    <section class="panel live-panel">
+      <h3>LIVE STÁTUSZ</h3>
+      <div class="stat"><span>👥</span><div>NÉZŐK<b id="viewerStat">0</b></div></div>
+      <div class="stat"><span>🎮</span><div>JÁTÉKOSOK<b id="playerCount">0</b></div></div>
+      <div class="sound-row"><button>🔊</button><button>🎵</button><button>🔔</button></div>
+    </section>
+  </aside>
+
+  <section class="game-column">
+    <div class="panel game-panel">
+      <h2>KÉRDÉS AKTUÁLIS</h2>
+      <div class="product-stage">
+        <div class="neon-arrow left-arrow">❯❯</div>
+        <div class="neon-arrow right-arrow">❮❮</div>
+        <div class="platform"></div>
+        <img id="termekkep" alt="Termék">
+      </div>
+      <div class="question">Mennyibe kerül ez a termék?</div>
+      <h1 id="termek">Indítsd el a játékot az admin felületről!</h1>
+      <div id="valaszok" class="answers"></div>
+      <div id="eredmeny" class="result"></div>
+    </div>
+  </section>
+
+  <aside class="rank-column">
+    <section class="panel rank-panel">
+      <div class="rank-head"><h2 id="rankTitle">🏆 TOP 25</h2><small>↻ <b id="switchCountdown">4</b> MP MÚLVA VÁLTÁS</small></div>
+      <div class="rank-headers"><span>HELY</span><span>JÁTÉKOS</span><span>PONT</span></div>
+      <div id="toplista" class="rank-body"></div>
+      <div class="rank-footer">☷ TELJES RANGLISTA</div>
+    </section>
+  </aside>
+
+  <aside class="gift-column">
+    <section class="panel gifts">
+      <h2>AKTUÁLIS AJÁNDÉKOK</h2>
+      <div class="gift-box"><h3>2x AJÁNDÉK</h3><div id="giftRules2x" class="gift-row"></div></div>
+      <div class="gift-box"><h3>3x AJÁNDÉK</h3><div id="giftRules3x" class="gift-row"></div></div>
+    </section>
+    <section class="panel level alltime-top3">
+      <h3>🏆 ÖRÖK TOP 3</h3>
+      <div id="allTimeTop3" class="alltime-list">
+        <div class="alltime-row"><span>🥇</span><b>—</b><strong>0</strong></div>
+        <div class="alltime-row"><span>🥈</span><b>—</b><strong>0</strong></div>
+        <div class="alltime-row"><span>🥉</span><b>—</b><strong>0</strong></div>
+      </div>
+    <div class="player-persistent-rankings"><div id="playerRankingTabs" class="player-ranking-tabs"><button data-tab="daily" class="active">NAPI</button><button data-tab="weekly">HETI</button><button data-tab="monthly">HAVI</button><button data-tab="allTime">ÖRÖK</button></div><div id="playerPersistentRankingList" class="player-ranking-list"></div></div></section>
+  </aside>
+</main>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js?v=final2"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "termek": "Coca-Cola 0,5 L",
+    "kep": "images/coca.jpg",
+    "helyesAr": 450,
+    "nehezseg": 1,
+    "kategoria": "Üdítő"
+  },
+  {
+    "id": 1784582353937,
+    "termek": "nutella",
+    "kep": "uploads/1784582353914-uzgcv4.jpg",
+    "helyesAr": 3500,
+    "nehezseg": 1,
+    "kategoria": "élelmiszer"
+  }
+]

@@ -14,5 +14,85 @@
     "helyesAr": 3500,
     "nehezseg": 1,
     "kategoria": "élelmiszer"
+  },
+  {
+    "id": 1784597427673,
+    "termek": "Xerox Phaser 3020V_BI Nyomtató",
+    "kep": "uploads/1784597427636-dj48a5.jpg",
+    "helyesAr": 34890,
+    "nehezseg": 3,
+    "kategoria": "elektronika"
+  },
+  {
+    "id": 1784597913723,
+    "termek": "Faber-Castell Grip 2001 Jumbo színes ceruza",
+    "kep": "uploads/1784597913708-hr323x.jpg",
+    "helyesAr": 6490,
+    "nehezseg": 3,
+    "kategoria": "használati cikk"
+  },
+  {
+    "id": 1784598638528,
+    "termek": "Acer Predator Extreme PES017",
+    "kep": "uploads/1784598638505-w6snc3.jpg",
+    "helyesAr": 329990,
+    "nehezseg": 5,
+    "kategoria": "Jármű"
+  },
+  {
+    "id": 1784598737956,
+    "termek": "Casio GW-M5610U-1ER",
+    "kep": "uploads/1784598737944-3t45io.jpg",
+    "helyesAr": 40805,
+    "nehezseg": 1,
+    "kategoria": "óra"
+  },
+  {
+    "id": 1784600221762,
+    "termek": "Citizen CB5001-57E",
+    "kep": "uploads/1784600221739-b9ynrx.jpg",
+    "helyesAr": 127425,
+    "nehezseg": 3,
+    "kategoria": "óra"
+  },
+  {
+    "id": 1784600512666,
+    "termek": "Chio Taccos grilles búza-burgonyasnack 65 g",
+    "kep": "uploads/1784600512625-d1mq7x.jpg",
+    "helyesAr": 349,
+    "nehezseg": 1,
+    "kategoria": "étel"
+  },
+  {
+    "id": 1784600989862,
+    "termek": "Nivea Krém 250 ml",
+    "kep": "uploads/1784600989848-8znp6z.jpg",
+    "helyesAr": 2485,
+    "nehezseg": 1,
+    "kategoria": "neszeszer"
+  },
+  {
+    "id": 1784601107070,
+    "termek": "Philips Series 1000 S1142/00 Borotva",
+    "kep": "uploads/1784601107058-tshpnr.jpg",
+    "helyesAr": 14790,
+    "nehezseg": 1,
+    "kategoria": "neszeszer"
+  },
+  {
+    "id": 1785175389849,
+    "termek": "Samsung FIT Plus 64GB",
+    "kep": "uploads/1785175389822-mu4vzf.jpg",
+    "helyesAr": 9600,
+    "nehezseg": 1,
+    "kategoria": "számítástechnika"
+  },
+  {
+    "id": 1785175830686,
+    "termek": "Apple iPhone 17 Pro Max 256GB",
+    "kep": "uploads/1785175830639-3tx3ve.jpg",
+    "helyesAr": 488890,
+    "nehezseg": 3,
+    "kategoria": "mobiltelefon"
   }
 ]

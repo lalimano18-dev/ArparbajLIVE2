@@ -54,11 +54,11 @@
         "avatar": ""
       },
       "lali": {
-        "score": 180,
+        "score": 208,
         "avatar": ""
       },
       "misi": {
-        "score": 101,
+        "score": 130,
         "avatar": ""
       },
       "lali11": {
@@ -67,6 +67,54 @@
       },
       "kaki": {
         "score": 27,
+        "avatar": ""
+      }
+    },
+    "2026-07-21": {
+      "lali": {
+        "score": 408,
+        "avatar": ""
+      },
+      "laci": {
+        "score": 329,
+        "avatar": ""
+      },
+      "misi": {
+        "score": 163,
+        "avatar": ""
+      },
+      "mismi": {
+        "score": 90,
+        "avatar": ""
+      },
+      "laci1": {
+        "score": 56,
+        "avatar": ""
+      },
+      "kari": {
+        "score": 77,
+        "avatar": ""
+      },
+      "kiki": {
+        "score": 133,
+        "avatar": ""
+      },
+      "soma": {
+        "score": 118,
+        "avatar": ""
+      },
+      "tomi": {
+        "score": 10,
+        "avatar": ""
+      }
+    },
+    "2026-07-27": {
+      "kos": {
+        "score": 50,
+        "avatar": ""
+      },
+      "lik": {
+        "score": 10,
         "avatar": ""
       }
     }
@@ -158,11 +206,11 @@
         "avatar": ""
       },
       "lali": {
-        "score": 180,
+        "score": 616,
         "avatar": ""
       },
       "misi": {
-        "score": 101,
+        "score": 293,
         "avatar": ""
       },
       "lali11": {
@@ -171,6 +219,44 @@
       },
       "kaki": {
         "score": 27,
+        "avatar": ""
+      },
+      "laci": {
+        "score": 329,
+        "avatar": ""
+      },
+      "mismi": {
+        "score": 90,
+        "avatar": ""
+      },
+      "laci1": {
+        "score": 56,
+        "avatar": ""
+      },
+      "kari": {
+        "score": 77,
+        "avatar": ""
+      },
+      "kiki": {
+        "score": 133,
+        "avatar": ""
+      },
+      "soma": {
+        "score": 118,
+        "avatar": ""
+      },
+      "tomi": {
+        "score": 10,
+        "avatar": ""
+      }
+    },
+    "2026-W31": {
+      "kos": {
+        "score": 50,
+        "avatar": ""
+      },
+      "lik": {
+        "score": 10,
         "avatar": ""
       }
     }
@@ -190,7 +276,7 @@
         "avatar": ""
       },
       "kiki": {
-        "score": 120,
+        "score": 253,
         "avatar": ""
       },
       "ll": {
@@ -258,11 +344,11 @@
         "avatar": ""
       },
       "lali": {
-        "score": 180,
+        "score": 616,
         "avatar": ""
       },
       "misi": {
-        "score": 101,
+        "score": 293,
         "avatar": ""
       },
       "lali11": {
@@ -271,6 +357,38 @@
       },
       "kaki": {
         "score": 27,
+        "avatar": ""
+      },
+      "laci": {
+        "score": 329,
+        "avatar": ""
+      },
+      "mismi": {
+        "score": 90,
+        "avatar": ""
+      },
+      "laci1": {
+        "score": 56,
+        "avatar": ""
+      },
+      "kari": {
+        "score": 77,
+        "avatar": ""
+      },
+      "soma": {
+        "score": 118,
+        "avatar": ""
+      },
+      "tomi": {
+        "score": 10,
+        "avatar": ""
+      },
+      "kos": {
+        "score": 50,
+        "avatar": ""
+      },
+      "lik": {
+        "score": 10,
         "avatar": ""
       }
     }
@@ -289,7 +407,7 @@
       "avatar": ""
     },
     "kiki": {
-      "score": 120,
+      "score": 253,
       "avatar": ""
     },
     "ll": {
@@ -357,11 +475,11 @@
       "avatar": ""
     },
     "lali": {
-      "score": 180,
+      "score": 616,
       "avatar": ""
     },
     "misi": {
-      "score": 101,
+      "score": 293,
       "avatar": ""
     },
     "lali11": {
@@ -370,6 +488,38 @@
     },
     "kaki": {
       "score": 27,
+      "avatar": ""
+    },
+    "laci": {
+      "score": 329,
+      "avatar": ""
+    },
+    "mismi": {
+      "score": 90,
+      "avatar": ""
+    },
+    "laci1": {
+      "score": 56,
+      "avatar": ""
+    },
+    "kari": {
+      "score": 77,
+      "avatar": ""
+    },
+    "soma": {
+      "score": 118,
+      "avatar": ""
+    },
+    "tomi": {
+      "score": 10,
+      "avatar": ""
+    },
+    "kos": {
+      "score": 50,
+      "avatar": ""
+    },
+    "lik": {
+      "score": 10,
       "avatar": ""
     }
   }

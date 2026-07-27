@@ -1,18 +1,128 @@
-<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ÁrPárbaj LIVE Admin</title><link rel="stylesheet" href="admin.css"></head><body>
-<section class="admin-card tiktok-admin"><h2>🎵 TikTok LIVE kapcsolat</h2><div class="admin-row"><input id="tiktokUsername" placeholder="@felhasználónév"><button id="connectTikTokBtn">Csatlakozás</button><button id="disconnectTikTokBtn">Leválasztás</button></div><p id="tiktokStatus">Nincs csatlakoztatva</p></section>
-<section class="admin-card test-admin"><h2>🧪 TikTok nélküli teljes játékteszt</h2><div class="admin-row"><input id="testName" placeholder="Egyedi tesztjátékos neve"><button id="createTestPlayer">Játékos létrehozása</button><select id="testPlayer" aria-label="Tesztjátékos"><option value="">Előbb hozz létre játékost</option></select></div><p>Az aktuális kérdés tényleges válaszazonosítóját válaszd ki — nem előre feltételezett A/B/C/D betűt.</p><div id="testAnswers" class="test-answers"><span>Indíts játékot az aktuális válaszokhoz.</span></div><p id="testStatus" class="test-status"></p></section><div class="admin-wrap"><header><div><h1>⚡ ÁrPárbaj LIVE</h1><p>Vezérlőpult</p></div><b>● ONLINE</b></header><section class="panel"><h2>⚙️ Játék beállítások</h2><div class="grid"><label>Kérdések száma<input id="maxQuestions" type="number" value="10" min="1"></label><label>Válaszadási idő (mp)<input id="countdown" type="number" value="20" min="3"></label><label>Kérdések közti idő (mp)<input id="between" type="number" value="3" min="0"></label><label class="checkbox"><input type="checkbox" id="autoMode"> Automatikus játékmód</label></div></section><section class="panel"><h2>🎮 Játékvezérlés</h2><div class="actions"><button id="start" class="primary">▶ INDÍTÁS</button><button id="pause">⏸ SZÜNET</button><button id="resume">▶ FOLYTATÁS</button><button id="next">⏭ KÖVETKEZŐ</button><button id="stop" class="danger">⏹ LEÁLLÍTÁS</button></div><div id="status"></div></section><section class="panel"><h2>➕ Új termék</h2><div class="grid"><label>Termék neve<input id="termek"></label><label>Helyes ár (Ft)<input id="helyesAr" type="number"></label><label>Nehézség<select id="nehezseg"><option value="1">🟢 Könnyű</option><option value="3">🟡 Közepes</option><option value="5">🔴 Nehéz</option></select></label><label>Kategória<input id="kategoria"></label></div><label class="upload">Termékkép<input id="image" type="file" accept="image/*"><span id="fileName">Kép kiválasztása…</span></label><button id="mentes" class="primary">💾 TERMÉK MENTÉSE</button><p>A 3 rossz árat a gép automatikusan generálja és a 4 választ véletlenszerűen keveri.</p></section><section class="panel"><h2>📦 Mentett termékek</h2><table><thead><tr><th>Kép</th><th>Termék</th><th>Ár</th><th>Kategória</th><th></th></tr></thead><tbody id="tbody"></tbody></table></section></div><script src="/socket.io/socket.io.js"></script><script src="admin.js"></script><section class="admin-live-rankings">
-<h2>📊 Élő ranglisták</h2>
-<div class="admin-rank-grid">
-<div id="view-round" class="rank-view">
-  <h3>⚡ Utolsó kérdés pontszámai</h3>
-  <div id="adminRoundRanking" class="admin-rank-list"></div>
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ÁrPárbaj LIVE Admin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<section class="admin-card tiktok-admin">
+  <h2>🎵 TikTok LIVE kapcsolat</h2>
+  <div class="admin-row">
+    <input id="tiktokUsername" placeholder="@felhasználónév">
+    <button id="connectTikTokBtn">Csatlakozás</button>
+    <button id="disconnectTikTokBtn">Leválasztás</button>
+  </div>
+  <p id="tiktokStatus">Nincs csatlakoztatva</p>
+</section>
+
+<section class="admin-card test-admin">
+  <h2>🧪 TikTok nélküli teljes játékteszt</h2>
+  <div class="admin-row">
+    <input id="testName" placeholder="Egyedi tesztjátékos neve">
+    <button id="createTestPlayer">Játékos létrehozása</button>
+    <select id="testPlayer" aria-label="Tesztjátékos"><option value="">Előbb hozz létre játékost</option></select>
+  </div>
+  <p>Az aktuális kérdés tényleges válaszazonosítóját válaszd ki — nem előre feltételezett A/B/C/D betűt.</p>
+  <div id="testAnswers" class="test-answers"><span>Indíts játékot az aktuális válaszokhoz.</span></div>
+  <p id="testStatus" class="test-status"></p>
+</section>
+
+<div class="admin-wrap">
+  <header>
+    <div><h1>⚡ ÁrPárbaj LIVE</h1><p>Vezérlőpult</p></div>
+    <b>● ONLINE</b>
+  </header>
+
+  <section class="panel">
+    <h2>⚙️ Játék beállítások</h2>
+    <div class="grid">
+      <label>Kérdések száma<input id="maxQuestions" type="number" value="10" min="1"></label>
+      <label>Válaszadási idő (mp)<input id="countdown" type="number" value="20" min="3"></label>
+      <label>Kérdések közti idő (mp)<input id="between" type="number" value="3" min="0"></label>
+      <label class="checkbox"><input type="checkbox" id="autoMode"> Automatikus játékmód</label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>🎮 Játékvezérlés</h2>
+    <div class="actions">
+      <button id="start" class="primary">▶ INDÍTÁS</button>
+      <button id="pause">⏸ SZÜNET</button>
+      <button id="resume">▶ FOLYTATÁS</button>
+      <button id="next">⏭ KÖVETKEZŐ</button>
+      <button id="stop" class="danger">⏹ LEÁLLÍTÁS</button>
+    </div>
+    <div id="status"></div>
+  </section>
+
+  <section class="panel">
+    <h2>➕ Új termék</h2>
+    <div class="grid">
+      <label>Termék neve<input id="termek"></label>
+      <label>Helyes ár (Ft)<input id="helyesAr" type="number"></label>
+      <label>Nehézség<select id="nehezseg"><option value="1">🟢 Könnyű</option><option value="3">🟡 Közepes</option><option value="5">🔴 Nehéz</option></select></label>
+      <label>Kategória<input id="kategoria"></label>
+    </div>
+    <label class="upload">Termékkép<input id="image" type="file" accept="image/*"><span id="fileName">Kép kiválasztása…</span></label>
+    <button id="mentes" class="primary">💾 TERMÉK MENTÉSE</button>
+    <p>A 3 rossz árat a gép automatikusan generálja és a 4 választ véletlenszerűen keveri.</p>
+  </section>
+
+  <section class="panel">
+    <h2>📦 Mentett termékek</h2>
+    <table>
+      <thead>
+        <tr><th>Kép</th><th>Termék</th><th>Ár</th><th>Kategória</th><th></th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
 </div>
-<div id="view-tournament" class="rank-view" style="display:none;">
-  <h3>🏆 Teljes ranglista</h3>
-  <div id="adminTournamentRanking" class="admin-rank-list"></div>
-</div>
-</div>
-</section><section class="panel"><h2>🏆 Dobogós eredményhirdetés</h2><div class="actions"><button id="showPodium">🏆 DOBOGÓ MEGJELENÍTÉSE</button><button id="hidePodium" class="danger">🚫 DOBOGÓ BEZÁRÁSA</button></div><p id="podiumStatus" class="muted">A dobogó a bajnokság végén automatikusan megjelenik.</p></section><section class="panel persistent-rankings"><h2>📊 Ranglisták</h2>
-    <div id="rankingTabs" class="ranking-tabs"><button data-tab="daily" class="active">NAPI</button><button data-tab="weekly">HETI</button><button data-tab="monthly">HAVI</button><button data-tab="allTime">ÖRÖK</button></div>
-    <div id="persistentRankingList" class="admin-rank-list"></div></section>
-</body></html>
+
+<section class="admin-live-rankings">
+  <h2>📊 Élő ranglisták</h2>
+  <div class="admin-rank-grid">
+    <div id="view-round" class="rank-view">
+      <h3>⚡ Utolsó kérdés pontszámai</h3>
+      <div id="adminRoundRanking" class="admin-rank-list"></div>
+    </div>
+    <div id="view-tournament" class="rank-view" style="display:none;">
+      <h3>🏆 Teljes ranglista</h3>
+      <div id="adminTournamentRanking" class="admin-rank-list"></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>🏆 Dobogós eredményhirdetés</h2>
+  <div class="actions">
+    <button id="showPodium">🏆 DOBOGÓ MEGJELENÍTÉSE</button>
+    <button id="hidePodium" class="danger">🚫 DOBOGÓ BEZÁRÁSA</button>
+  </div>
+  <div class="actions">
+    <button id="showDailyRanking">📊 NAPI RANGLISTA</button>
+    <button id="showWeeklyRanking">📊 HETI RANGLISTA</button>
+    <button id="showMonthlyRanking">📊 HAVI RANGLISTA</button>
+    <button id="showAllTimeRanking">📊 ÖRÖK RANGLISTA</button>
+    <button id="hideRanking" class="danger">❌ BEZÁRÁS</button>
+  </div>
+  <p id="podiumStatus" class="muted">A dobogó a bajnokság végén automatikusan megjelenik.</p>
+</section>
+
+<section class="panel persistent-rankings">
+  <h2>📊 Ranglisták</h2>
+  <div id="rankingTabs" class="ranking-tabs">
+    <button data-tab="daily" class="active">NAPI</button>
+    <button data-tab="weekly">HETI</button>
+    <button data-tab="monthly">HAVI</button>
+    <button data-tab="allTime">ÖRÖK</button>
+  </div>
+  <div id="persistentRankingList" class="admin-rank-list"></div>
+</section>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

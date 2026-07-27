@@ -25,9 +25,12 @@ s.on("roundEnded",d=>{renderRanking("adminRoundRanking",d.roundRanking);renderRa
 s.on("leaderboardUpdated",d=>{renderRanking("adminTournamentRanking",d.players);renderRanking("adminRoundRanking")});
 s.on("tournamentStarted",()=>{renderRanking("adminRoundRanking");renderRanking("adminTournamentRanking");currentAnswers=[];renderAnswerButtons();showRoundView();resetAutoRotate()});
 
-$("connectTikTokBtn")?.addEventListener("click",()=>s.emit("connectTikTok",{username:$("tiktokUsername")?.value||""}));$("disconnectTikTokBtn")?.addEventListener("click",()=>s.emit("disconnectTikTok"));
+$("connectTikTokBtn")?.addEventListener("click",()=>{console.log("[ADMIN] Connect gomb megnyomva");console.log("[ADMIN] Username:",$("tiktokUsername")?.value);console.log("[ADMIN] connectTikTok emit");s.emit("connectTikTok",{username:$("tiktokUsername")?.value||""})});$("disconnectTikTokBtn")?.addEventListener("click",()=>s.emit("disconnectTikTok"));
 s.on("tiktokStatus",d=>{const el=$("tiktokStatus");if(el)el.textContent=`${d.status==="connected"?"🟢":d.status==="connecting"?"🟡":"🔴"} ${d.message||d.status}${d.username?" @"+d.username:""}`});
 $("showPodium").onclick=()=>s.emit("showPodium");$("hidePodium").onclick=()=>s.emit("hidePodium");
+const rankingButtons={showDailyRanking:"daily",showWeeklyRanking:"weekly",showMonthlyRanking:"monthly",showAllTimeRanking:"allTime"};
+Object.entries(rankingButtons).forEach(([id,type])=>{$(id)?.addEventListener("click",()=>s.emit("showRanking",{type}))});
+$("hideRanking")?.addEventListener("click",()=>s.emit("hideRanking"));
 
 let persistentRanks={daily:[],weekly:[],monthly:[],allTime:[]},activeRankTab="daily";
 function renderPersistent(){const el=$("persistentRankingList"),rows=persistentRanks[activeRankTab]||[];if(el)el.innerHTML=rows.length?rows.slice(0,100).map((p,i)=>`<div class="admin-rank-row"><span>${i+1}.</span><b>${p.name||"—"}</b><strong>${Number(p.score)||0}</strong></div>`).join(""):'<div class="admin-rank-empty">Még nincs eredmény</div>'}

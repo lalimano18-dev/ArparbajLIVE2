@@ -6,12 +6,14 @@ class TikTokBridge {
   constructor(io,{onAnswer,onGift}={}){this.io=io;this.conn=null;this.username="";this.onAnswer=onAnswer;this.onGift=onGift}
   status(status,message=""){this.io.emit("tiktokStatus",{status,username:this.username,message})}
   async connect(username){
+    console.log("[BRIDGE] connect()", username);
     await this.disconnect();
     this.username=String(username||"").replace(/^@/,"").trim();
     if(!this.username)throw new Error("Adj meg TikTok felhasználónevet.");
     if(!WebcastPushConnection)throw new Error("A tiktok-live-connector nincs telepítve. Futtasd: npm install");
     this.status("connecting","Csatlakozás...");
     this.conn=new WebcastPushConnection(this.username);
+    console.log("[BRIDGE] Connection objektum létrehozva");
     this.conn.on("chat",d=>{
       const text=String(d.comment||"").trim().toUpperCase();
       const m=text.match(/^[A-ZÁÉÍÓÖŐÚÜŰ]$/i);
@@ -28,11 +30,13 @@ class TikTokBridge {
       this.io.emit("tiktokGift",ev);
     });
     this.conn.on("streamEnd",()=>this.status("disconnected","A LIVE véget ért."));
+    console.log("[BRIDGE] connect() meghívása");
     try{
       const state=await this.conn.connect();
+      console.log("[BRIDGE] TikTok kapcsolat létrejött");
       this.status("connected","Csatlakozva a TikTok LIVE-hoz.");
       return state;
-    }catch(e){this.status("error",e?.message||String(e));this.conn=null;throw e}
+    }catch(e){console.error("[BRIDGE] connect error:", e);this.status("error",e?.message||String(e));this.conn=null;throw e}
   }
   async disconnect(){
     if(this.conn){try{this.conn.disconnect()}catch{}}

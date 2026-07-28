@@ -22,7 +22,7 @@ const tournamentTop=()=>topFromMap(tournament);
 function emitBoards(){io.emit("leaderboardUpdated",{players:tournamentTop(),activePlayerCount:activePlayers.size})}
 function difficultyKey(n){n=Number(n)||1;return n>=5?"hard":n>=3?"medium":"easy"}
 function basePoints(diff,place){const k=difficultyKey(diff);if(k==="easy")return Math.max(1,11-place);if(k==="medium")return Math.max(10,32-place*2);return Math.max(20,52-place*2)}
-function giftConfig(diff){const k=difficultyKey(diff);if(k==="easy")return[{points:1,multiplier:2},{points:20,multiplier:3}]:k==="medium"?[{points:30,multiplier:2},{points:99,multiplier:3}]:[{points:99,multiplier:2},{points:299,multiplier:3}]}
+function giftConfig(diff){const k=difficultyKey(diff);if(k==="easy")return[{points:1,multiplier:2},{points:20,multiplier:3}];else if(k==="medium")return[{points:30,multiplier:2},{points:99,multiplier:3}];else return[{points:99,multiplier:2},{points:299,multiplier:3}]}
 function addTournament(player,pts,avatar=""){const {key}=typeof player==="string"?participant({name:player}):player;if(avatar)profiles.set(key,{avatar});tournament.set(key,(tournament.get(key)||0)+pts);emitBoards()}
 function rankingData(){let r={daily:{},weekly:{},monthly:{},allTime:{}};try{const old=JSON.parse(fs.readFileSync(RANKINGS,"utf8"));r={...r,...old}}catch{}return r}
 function periodKeys(){const now=new Date(),day=now.toISOString().slice(0,10),tmp=new Date(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate()));const dn=tmp.getUTCDay()||7;tmp.setUTCDate(tmp.getUTCDate()+4-dn);const ys=new Date(Date.UTC(tmp.getUTCFullYear(),0,1));const wn=Math.ceil((((tmp-ys)/86400000)+1)/7);return{day,week:`${tmp.getUTCFullYear()}-W${String(wn).padStart(2,"0")}`,month:`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`}}
@@ -42,7 +42,7 @@ function closeRound(){if(!S.running||S.paused||S.closed)return;clearTimers();S.c
 function finishTournament(){clearTimers();saveRankings();S.running=false;S.closed=true;const players=tournamentTop();const top3=players.slice(0,3);while(top3.length<3)top3.push({name:"—",score:0,avatar:""});io.emit("tournamentEnded",{top3,players})}
 function applyGift(d){if(!S.running||S.paused||S.closed)return;const player=participant(d),value=Number(d?.points??d?.coins??0),rules=giftConfig(S.q?.nehezseg||1);const mult=value>=rules[1].points?3:value>=rules[0].points?2:1;if(mult>1)giftMultiplier.set(player.key,Math.max(giftMultiplier.get(player.key)||1,mult));return{player,value,mult}}
 const tiktokBridge=new TikTokBridge(io,{onAnswer:d=>submitAnswer(d),onGift:d=>applyGift(d)});
-io.on("connection",s=>{
+io.on("connection",s=>{console.log("CONNECT",s.id);
   s.emit("gameState",{running:S.running,paused:S.paused,countdown:remainingSeconds(),between:S.between,questionNumber:S.num,maxQuestions:S.max,autoMode:S.autoMode});s.emit("leaderboardUpdated",{players:tournamentTop()});emitPersistent(s);if(S.running&&S.q&&!S.closed)s.emit("questionStarted",payload());
   s.on("startGame",d=>{clearTimers();S.running=true;S.paused=false;S.countdown=Math.max(3,+d?.countdown||20);S.between=Math.max(1,+d?.between||3);S.max=Math.max(1,+d?.maxQuestions||10);S.autoMode=!!d?.autoMode;S.index=-1;S.num=0;S.closed=true;tournament.clear();profiles.clear();playerNames.clear();roundAnswers.clear();giftMultiplier.clear();activePlayers.clear();emitBoards();io.emit("tournamentStarted");next()});
   s.on("pauseGame",()=>{if(!S.running||S.paused)return;S.remaining=remainingSeconds();S.paused=true;clearTimers();io.emit("gamePaused",{remaining:S.remaining})});
@@ -59,6 +59,6 @@ io.on("connection",s=>{
   s.on("saveQuestion",d=>{const qs=loadQuestions().map(norm),q=norm({...d,id:Date.now()});if(!q.termek||!q.kep||!(q.helyesAr>0))return s.emit("adminMessage",{ok:false,message:"Hiányos adatok."});qs.push(q);saveQuestions(qs);io.emit("questionsUpdated",qs);s.emit("adminMessage",{ok:true,message:"✅ Termék elmentve."})});
   s.on("getQuestions",()=>s.emit("questionsUpdated",loadQuestions().map(norm)));s.on("deleteQuestion",id=>{const q=loadQuestions().map(norm).filter(x=>String(x.id)!==String(id));saveQuestions(q);io.emit("questionsUpdated",q)});
   s.on("showPodium",()=>io.emit("showPodiumManually",{top3:tournamentTop().slice(0,3)}));s.on("hidePodium",()=>io.emit("hidePodiumManually"));
-  s.on("showRanking",d=>{const snap=rankingSnapshot();const data=snap[d?.type]||[];io.emit("showRankingOverlay",{type:d?.type,players:data})});s.on("hideRanking",()=>io.emit("hideRankingOverlay"));
+  s.on("showRanking",d=>{console.log("SERVER RECEIVED showRanking from",s.id,d?.type);const snap=rankingSnapshot();const data=snap[d?.type]||[];console.log("SERVER SENT",d?.type);io.emit("showRankingOverlay",{type:d?.type,players:data})});s.on("hideRanking",()=>io.emit("hideRankingOverlay"));
 });
 httpServer.listen(PORT,()=>console.log(`\n🎮 ÁrPárbaj LIVE\nJáték: http://localhost:${PORT}\nAdmin: http://localhost:${PORT}/admin\n`));

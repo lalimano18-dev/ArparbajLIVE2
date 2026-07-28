@@ -116,6 +116,24 @@
       "lik": {
         "score": 10,
         "avatar": ""
+      },
+      "lal": {
+        "score": 10,
+        "avatar": ""
+      },
+      "ss": {
+        "score": 50,
+        "avatar": ""
+      },
+      "aa": {
+        "score": 30,
+        "avatar": ""
+      }
+    },
+    "2026-07-28": {
+      "w": {
+        "score": 10,
+        "avatar": ""
       }
     }
   },
@@ -258,6 +276,22 @@
       "lik": {
         "score": 10,
         "avatar": ""
+      },
+      "lal": {
+        "score": 10,
+        "avatar": ""
+      },
+      "ss": {
+        "score": 50,
+        "avatar": ""
+      },
+      "aa": {
+        "score": 30,
+        "avatar": ""
+      },
+      "w": {
+        "score": 10,
+        "avatar": ""
       }
     }
   },
@@ -390,6 +424,22 @@
       "lik": {
         "score": 10,
         "avatar": ""
+      },
+      "lal": {
+        "score": 10,
+        "avatar": ""
+      },
+      "ss": {
+        "score": 50,
+        "avatar": ""
+      },
+      "aa": {
+        "score": 30,
+        "avatar": ""
+      },
+      "w": {
+        "score": 10,
+        "avatar": ""
       }
     }
   },
@@ -519,6 +569,22 @@
       "avatar": ""
     },
     "lik": {
+      "score": 10,
+      "avatar": ""
+    },
+    "lal": {
+      "score": 10,
+      "avatar": ""
+    },
+    "ss": {
+      "score": 50,
+      "avatar": ""
+    },
+    "aa": {
+      "score": 30,
+      "avatar": ""
+    },
+    "w": {
       "score": 10,
       "avatar": ""
     }

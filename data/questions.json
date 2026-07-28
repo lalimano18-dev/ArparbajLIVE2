@@ -94,5 +94,21 @@
     "helyesAr": 488890,
     "nehezseg": 3,
     "kategoria": "mobiltelefon"
+  },
+  {
+    "id": 1785184461802,
+    "termek": "Continental PremiumContact 7 205/55 R16",
+    "kep": "uploads/1785184461790-5m6tne.jpg",
+    "helyesAr": 32750,
+    "nehezseg": 1,
+    "kategoria": "Autóalkatrész"
+  },
+  {
+    "id": 1785198156269,
+    "termek": "IREDA Fürdőszobatükör LED világítás",
+    "kep": "uploads/1785198156253-6enfb1.jpg",
+    "helyesAr": 48190,
+    "nehezseg": 1,
+    "kategoria": "bútor"
   }
 ]

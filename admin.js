@@ -29,7 +29,7 @@ $("connectTikTokBtn")?.addEventListener("click",()=>{console.log("[ADMIN] Connec
 s.on("tiktokStatus",d=>{const el=$("tiktokStatus");if(el)el.textContent=`${d.status==="connected"?"🟢":d.status==="connecting"?"🟡":"🔴"} ${d.message||d.status}${d.username?" @"+d.username:""}`});
 $("showPodium").onclick=()=>s.emit("showPodium");$("hidePodium").onclick=()=>s.emit("hidePodium");
 const rankingButtons={showDailyRanking:"daily",showWeeklyRanking:"weekly",showMonthlyRanking:"monthly",showAllTimeRanking:"allTime"};
-Object.entries(rankingButtons).forEach(([id,type])=>{$(id)?.addEventListener("click",()=>s.emit("showRanking",{type}))});
+Object.entries(rankingButtons).forEach(([id,type])=>{$(id)?.addEventListener("click",()=>{console.log("ADMIN ->",type.toUpperCase());s.emit("showRanking",{type})})});
 $("hideRanking")?.addEventListener("click",()=>s.emit("hideRanking"));
 
 let persistentRanks={daily:[],weekly:[],monthly:[],allTime:[]},activeRankTab="daily";

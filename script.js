@@ -1,6 +1,6 @@
 const s=io(),$=id=>document.getElementById(id);
 let roundId=null,timer=null,roundRanking=[],tournamentRanking=[];
-const audio={timer:new Audio("sounds/timer.wav"),crowd:new Audio("sounds/crowd.wav")};
+const audio={timer:new Audio("sounds/timer.wav"),applause:new Audio("sounds/applause.mp3")};
 
 let tickAudioCtx=null;
 function clockTick(){
@@ -26,8 +26,7 @@ function setGifts(rules){
   box.innerHTML=rules.map(g=>`<div class="gift-rule"><div class="gift-points">${g.multiplier}× szorzó</div><div class="gift-mult">🪙 ${g.points}</div></div>`).join("");
 }
 function setDiff(n){const e=$("nehezseg"),k=diffKey(n);if(e)e.textContent=k==="hard"?"🔴 Nehéz":k==="medium"?"🟠 Közepes":"🟢 Könnyű"}
-function renderQuestion(d){
-  const q=d.question||{};
+function renderQuestion(d){console.log("QUESTION START");const q=d.question||{};
   roundId=d.roundId;
   $("kerdesSzam").textContent=`${d.questionNumber}/${d.maxQuestions}. KÉRDÉS`;
   $("termek").textContent=q.termek||"";
@@ -52,8 +51,7 @@ function renderQuestion(d){
     if(left<=0){clearInterval(timer);s.emit("timeExpired",{roundId})}
   },1000);
 }
-function launchPodium(top3){
-  clearInterval(timer);clearInterval(fixBoardTimer);
+function launchPodium(top3){console.log("SHOW PODIUM");clearInterval(timer);clearInterval(fixBoardTimer);
   const o=$("podiumOverlay");o.classList.add("show");
   [1,2,3].forEach((n,i)=>{
     const p=top3[i]||{name:"—",score:0,avatar:""},el=$("podium"+n);
@@ -65,7 +63,7 @@ function launchPodium(top3){
     if(img&&p.avatar){img.src=p.avatar;img.style.display="block";if(emoji)emoji.style.display="none"}else if(img){img.style.display="none"}
     if(emoji&&!p.avatar){emoji.style.display="";emoji.textContent=n===1?"🥇":n===2?"🥈":"🥉"}
   });
-  play("crowd");fireworks();
+  console.log("PLAYING APPLAUSE");play("applause");fireworks();
 }
 function fireworks(){
   const c=$("fireworks");if(!c)return;
@@ -75,12 +73,12 @@ function fireworks(){
   let f=0;(function anim(){x.clearRect(0,0,c.width,c.height);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.012;p.life--;x.fillStyle=p.color;x.globalAlpha=Math.max(0,p.life/180);x.fillRect(p.x,p.y,3,3)});x.globalAlpha=1;if(f++<220)requestAnimationFrame(anim)})()
 }
 s.on("connect",()=>console.log("Kapcsolódva:",s.id));
-s.on("tournamentStarted",()=>{$("podiumOverlay").classList.remove("show");roundRanking=[];tournamentRanking=[];fixBoardIndex=0;fixStartBoardRotation()});
+s.on("tournamentStarted",()=>{console.log("HIDE PODIUM");$("podiumOverlay").classList.remove("show");roundRanking=[];tournamentRanking=[];fixBoardIndex=0;fixStartBoardRotation()});
 s.on("questionStarted",d=>renderQuestion(d));
 s.on("roundEnded",d=>{clearInterval(timer);$("ido").textContent="0";roundRanking=d.roundRanking||[];tournamentRanking=d.tournamentRanking||tournamentRanking;fixBoardIndex=0;fixRenderBoard();const e=$("eredmeny");e.innerHTML=`<span class="correct-label">HELYES VÁLASZ</span><strong>${d.correctLetter}</strong><span>${Number(d.correctPrice).toLocaleString("hu-HU")} Ft</span>`});
 s.on("leaderboardUpdated",d=>{tournamentRanking=d.players||[];const pc=$("playerCount");if(pc)pc.textContent=d.activePlayerCount||tournamentRanking.length;fixRenderBoard()});
 s.on("tournamentEnded",d=>{tournamentRanking=(d.players&&d.players.length)?d.players:tournamentRanking;fixRenderBoard();const top3=(d.top3&&d.top3.length)?d.top3:(tournamentRanking.length?tournamentRanking:(d.players||[])).slice(0,3);setTimeout(()=>launchPodium(top3),1200)});
-s.on("showRankingOverlay",d=>{const o=$("rankingOverlay");if(!o)return;const title=$("rankingTitle");const list=$("rankingList");const typeTitles={daily:"🏆 NAPI TOP 25",weekly:"🏆 HETI TOP 25",monthly:"🏆 HAVI TOP 25",allTime:"🏆 ÖRÖK TOP 25"};if(title)title.textContent=typeTitles[d?.type]||d?.title||"🏆 RANGLISTA";if(list){const rows=(d?.players||[]).slice(0,25);list.innerHTML=rows.length?rows.map((p,i)=>`<div class="ranking-row ${i<1?"gold":i===1?"silver":i===2?"bronze":""}"><span class="r-pos">${i+1}.</span><span class="r-name">${escapeHtml(p.name||"—")}</span><span class="r-score">${Number(p.score)||0}</span></div>`).join(""):'<div class="ranking-row"><span class="r-pos">—</span><span class="r-name">Még nincs eredmény</span><span class="r-score">0</span></div>'}o.classList.add("show")});
+s.on("showRankingOverlay",d=>{console.log("CLIENT RECEIVED",d?.type);const o=$("rankingOverlay");if(!o)return;const title=$("rankingTitle");const list=$("rankingList");const typeTitles={daily:"🏆 NAPI TOP 25",weekly:"🏆 HETI TOP 25",monthly:"🏆 HAVI TOP 25",allTime:"🏆 ÖRÖK TOP 25"};if(title)title.textContent=typeTitles[d?.type]||d?.title||"🏆 RANGLISTA";if(list){const rows=(d?.players||[]).slice(0,25);list.innerHTML=rows.length?rows.map((p,i)=>`<div class="ranking-row ${i<1?"gold":i===1?"silver":i===2?"bronze":""}"><span class="r-pos">${i+1}.</span><span class="r-name">${escapeHtml(p.name||"—")}</span><span class="r-score">${Number(p.score)||0}</span></div>`).join(""):'<div class="ranking-row"><span class="r-pos">—</span><span class="r-name">Még nincs eredmény</span><span class="r-score">0</span></div>'}o.classList.add("show");console.log(o);console.log(getComputedStyle(o).display);console.log(getComputedStyle(o).visibility);console.log(getComputedStyle(o).opacity);console.log(getComputedStyle(o).zIndex)});
 s.on("hideRankingOverlay",()=>{const o=$("rankingOverlay");if(o)o.classList.remove("show")});
 $("closeRankingBtn")?.addEventListener("click",()=>s.emit("hideRanking"));
 s.on("showPodiumManually",d=>launchPodium(d.top3||[]));
